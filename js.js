@@ -1,9 +1,13 @@
 let container = document.querySelector(".container")
+let grid = document.querySelector(".grid")
+grid.addEventListener('click', () => prompt("How many grid(1-100)"))
 
 //Глобально отслеживаем зажата ли кнопка
 let isDrawing = false
 window.addEventListener('mousedown', () => isDrawing = true)
 window.addEventListener('mouseup', () => isDrawing = false)
+
+
 
 function paint(el) {
     el.classList.add('active')

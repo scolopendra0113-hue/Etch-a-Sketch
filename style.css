@@ -1,6 +1,10 @@
 body {
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+
+    background: linear-gradient(to right, blue, red, yellow);
 }
 
 .container {
@@ -15,6 +19,32 @@ body {
     margin-right: auto;
 }
 
+.container-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.btn {
+    width: 100px;
+    height: 50px;
+
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.red {
+    background-color: red;
+}
+
+.yellow {
+    background-color: yellow;
+}
 
 .block {
     background-color: black;
