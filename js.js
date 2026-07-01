@@ -1,11 +1,20 @@
 let container = document.querySelector(".container")
-let grid = document.querySelector(".grid")
-grid.addEventListener('click', () => prompt("How many grid(1-100)"))
 
-//Глобально отслеживаем зажата ли кнопка
-let isDrawing = false
-window.addEventListener('mousedown', () => isDrawing = true)
-window.addEventListener('mouseup', () => isDrawing = false)
+let side = 16
+
+
+
+userGrid = document.querySelector(".userGrid")
+
+userGrid.addEventListener('click', () => {
+    let newGrid = prompt("Введите размер сетки")
+    if (newGrid && !isNaN(newGrid) && newGrid > 0) {
+        side = parseInt(newGrid)
+        createGrid()
+    }
+})
+    
+
 
 
 
@@ -13,21 +22,39 @@ function paint(el) {
     el.classList.add('active')
 }
 
+function createGrid(){
+    container.innerHTML = ""
 
-for (let i = 0; i < 256; i++) {
-    //Создаем сетку из блоков
-    let block = document.createElement("div")
-    block.classList.add('block')
+    let isDrawing = false
+    container.addEventListener('mousedown', (event) => {
+        isDrawing = true
 
-    //Красим блок если по нему нажали
-    block.addEventListener('mousedown', () => paint(block))
-
-    //Красим удерживая кнопку
-    block.addEventListener('mouseenter', () => {
-        if(isDrawing) {
-            paint(block)
+        if (event.target.classList.contains('block')) {
+            paint(event.target)
         }
     })
+    window.addEventListener('mouseup', () => isDrawing = false)
+    
 
-    container.appendChild(block)
+    
+    for (let i = 0; i < side * side; i++) {
+        //Создаем сетку из блоков
+        let block = document.createElement("div")
+        block.classList.add('block')
+
+        //Красим блок если по нему нажали
+        block.addEventListener('mousedown', () => paint(block))
+
+        //Красим удерживая кнопку
+        block.addEventListener('mouseenter', () => {
+            if(isDrawing) {
+                paint(block)
+            }
+        })
+
+        container.appendChild(block)
+    }
 }
+
+createGrid()
+

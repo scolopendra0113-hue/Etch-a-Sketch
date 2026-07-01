@@ -1,8 +1,8 @@
 body {
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     background: linear-gradient(to right, blue, red, yellow);
 }
@@ -12,8 +12,9 @@ body {
     flex-wrap: wrap;
     align-content: flex-start;
 
-    width: 800px;
-    height: 800px;
+    --box-size: 800px;
+    width: var(--box-size);
+    height: var(--box-size);
 
     margin-left: auto;
     margin-right: auto;
@@ -46,13 +47,20 @@ body {
     background-color: yellow;
 }
 
-.block {
-    background-color: black;
-
+.userGrid {
+    
     width: 50px;
-    height: 50px;
+    height: 20px;
+}
+
+.block {
+    background-color: #fff;
+
+    --block-size: 50px;
+    width: var(--block-size);
+    height: var(--block-size);
 }
 
 .block.active {
-    background-color: aqua;
+    background-color: #000;
 }
